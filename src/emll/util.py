@@ -3,6 +3,7 @@ import scipy as sp
 import pytensor.tensor as at
 import pymc as pm
 from pathlib import Path
+import pandas as pd
 
 import tellurium as te
 import libsbml
@@ -341,3 +342,12 @@ def ant_to_cobra(antimony_path):
         os.remove("tempA7K8L2P4W9.txt")
 
     return f"{output_path}/{output_name}_cobra"
+
+def series_to_hdi(series: pd.Series, hdi_prob: float = 0.94) -> pd.Series:
+    """
+    Compute HDI on a pandas Series by converting to numpy first.
+    Returns a Series with index ['hdi_lower', 'hdi_upper'].
+    """
+    arr = series.to_numpy()
+    hdi_bounds = pm.hdi(arr, hdi_prob=hdi_prob)
+    return pd.Series(hdi_bounds, index=["hdi_lower", "hdi_upper"])
