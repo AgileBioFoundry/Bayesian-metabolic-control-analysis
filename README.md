@@ -1,30 +1,34 @@
 # Ensemble Modeling with Linear-Logarithmic Kinetics (emll)
 
-This project is a maintained fork of the code [pstjohn/emll](https://github.com/pstjohn/emll) using PyTensor over Theano. 
+This project is a maintained fork of the code [pstjohn/emll](https://github.com/pstjohn/emll) using PyTensor over Theano.  
+Works using `emll` can be found:
 
-Works using emll can be found:
 - [Bayesian Inference of Metabolic Kinetics from Genome-Scale Multiomics Data](https://dx.plos.org/10.1371/journal.pcbi.1007424)
-- [Bayesian Inference for Integrating Yarrowia lipolytica Multiomics Datasets with Metabolic Modeling](https://pubs.acs.org/doi/full/10.1021/acssynbio.1c00267)
+- [Bayesian Inference for Integrating *Yarrowia lipolytica* Multiomics Datasets with Metabolic Modeling](https://pubs.acs.org/doi/full/10.1021/acssynbio.1c00267)
+
+---
 
 ## Installation
 
-To install:
+To install the package, run the following:
 
-```shell
+```bash
 pip install git+https://github.com/pnnl-predictive-phenomics/emll.git
 ```
 
-or to install in developer mode:
+## Developer Installation
+If you want to install in developer mode, use:
 ```python
-git clone https://github.com/pnnl-predictive-phenomics/emll.git
-cd emll
-python -m pip install -e .
+~ git clone https://github.com/AgileBioFoundry Bayesian-metabolic-control-analysis.git
+~ cd bayesian-metabolic-control-analysis
+➜  bayesian-metabolic-control-analysis python -m pip install -e .
 ```
 
-Test install by running:
+## Test Installation
+Test the installation by running the following command:
 
 ```shell
-python -c "import emll"
+bayesian-metabolic-control-analysis python -c "import emll"
 ```
 
 This code uses the intelpython distribution for some faster blas routines.
