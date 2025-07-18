@@ -16,19 +16,67 @@ To install the package, run the following:
 pip install git+https://github.com/pnnl-predictive-phenomics/emll.git
 ```
 
-## Developer Installation
-If you want to install in developer mode, use:
-```python
-~ git clone https://github.com/AgileBioFoundry Bayesian-metabolic-control-analysis.git
-~ cd bayesian-metabolic-control-analysis
-➜  bayesian-metabolic-control-analysis python -m pip install -e .
+## Getting Started with `emll`
+
+### 1. Clone the Repository
+
+Begin by cloning the repository:
+
+```bash
+git clone https://github.com/AgileBioFoundry/Bayesian-metabolic-control-analysis.git
 ```
 
-## Test Installation
-Test the installation by running the following command:
+## 2. Change Directory into the Repository
+
+```bash
+Navigate to the project directory:
+
+cd bayesian-metabolic-control-analysis
+
+Expected terminal output:
+
+➜  bayesian-metabolic-control-analysis
+```
+## 3. Install UV
+uv is an extremely fast Python package and project manager, written in Rust. Install uv globally:
+
+```bash
+pip install uv
+```
+
+## 4. Set Up a Virtual Environment
+Use uv to set up a Python virtual environment (compatible with Python 3.11.8):
+
+```bash
+uv venv --python 3.11.8
+```
+
+## 5. Activate the Virtual Environment
+Activate the virtual environment:
+
+On Linux/macOS:
+
+```bash
+source .venv/bin/activate
+```
+
+On Windows:
 
 ```shell
-bayesian-metabolic-control-analysis python -c "import emll"
+.venv\Scripts\activate
+```
+
+## 6. Install emll in Developer Mode
+Install emll in editable mode using the following command:
+
+```bash
+uv pip install -e .
+```
+
+Test your installation to verify everything is set up:
+
+```bash
+python -c "import emll"
 ```
 
 This code uses the intelpython distribution for some faster blas routines.
