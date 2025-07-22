@@ -1,0 +1,42 @@
+# pyproject.toml
+
+# Defines the build system (setuptools is standard and robust)
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+ 
+# Project metadata and dependencies
+[project]
+# --- Core Metadata (fill these in later) ---
+name = "emll"
+version = "0.1.0"
+authors = [
+  { name="Your Name", email="your@email.com" },
+]
+description = "A placeholder description for the emll package."
+readme = "README.md"
+license = { text = "MIT" } # Or another license of your choice
+ 
+# --- Python Version Constraint ---
+# Using "==" enforces the exact Python version, as you required.
+requires-python = "==3.11.8"
+ 
+# --- Core Dependencies ---
+# All dependencies needed for the package to function, including notebook support.
+# Users will get everything they need with a single install command.
+dependencies = [
+    "cobra==0.29.0",
+    "arviz==0.13.0",
+    "scipy==1.9.3",
+    "pandas",
+    "cloudpickle",
+    "numpy~=1.24.0",  # ~=1.24.0 means >=1.24.0 and <1.25.0
+    "pymc==5.9.2",
+    "pytensor==2.17.4",
+    "seaborn==0.12.1",
+    "tqdm",
+    "ipython",
+    "ipykernel",
+    "matplotlib",
+    "pytest",
+]
