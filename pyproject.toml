@@ -30,7 +30,7 @@ dependencies = [
     "scipy==1.9.3",
     "pandas",
     "cloudpickle",
-    "numpy~=1.24.0",  # ~=1.24.0 means >=1.24.0 and <1.25.0
+    "numpy~=1.24.0", # ~=1.24.0 means >=1.24.0 and <1.25.0
     "pymc==5.9.2",
     "pytensor==2.17.4",
     "seaborn==0.12.1",
@@ -39,4 +39,5 @@ dependencies = [
     "ipykernel",
     "matplotlib",
     "pytest",
+    "tellurium>=2.2.11",
 ]
