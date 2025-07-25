@@ -40,4 +40,5 @@ dependencies = [
     "matplotlib",
     "pytest",
     "tellurium>=2.2.11",
+    "scikit-learn>=1.7.1",
 ]
