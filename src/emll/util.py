@@ -3,6 +3,8 @@ import scipy as sp
 import pytensor.tensor as at
 import pymc as pm
 from pathlib import Path
+import pandas as pd
+import xarray as xr
 
 import tellurium as te
 import libsbml
@@ -341,3 +343,33 @@ def ant_to_cobra(antimony_path):
         os.remove("tempA7K8L2P4W9.txt")
 
     return f"{output_path}/{output_name}_cobra"
+
+def series_to_hdi(series: pd.Series, hdi_prob: float = 0.94) -> pd.Series:
+    """
+    Compute HDI on a pandas Series by converting to numpy first.
+    Returns a Series with index ['hdi_lower', 'hdi_upper'].
+    """
+    arr = series.to_numpy()
+    hdi_bounds = pm.hdi(arr, hdi_prob=hdi_prob)
+    return pd.Series(hdi_bounds, index=["hdi_lower", "hdi_upper"])
+
+
+
+def interrogate_hdi(hpd: xr.Dataset) -> np.ndarray:
+    """
+    Perform consistency comparison for HDI bounds and balance the output as required.
+    
+    Args:
+        hpd (xr.Dataset): HDI dataset from PyMC.
+    
+    Returns:
+        np.ndarray: Balanced boolean array (25 False, 25 True).
+    """
+    # Convert dataset to DataArray for direct manipulation
+    e_array = hpd.to_array()
+
+    # Consistency comparison: Compare signs of lower and upper bounds
+    e_consistent = (
+        np.sign(e_array[:, :, :, 0]) == np.sign(e_array[:, :, :, 1])
+    )
+    return e_consistent.any(axis=1).squeeze()
